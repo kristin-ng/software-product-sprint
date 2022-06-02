@@ -1,19 +1,133 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click <a href="/hello">here</a> to see content created by server code.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
-    </div>
-  </body>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name=""viewport" content="width=device-width, initial-scale=0.41, maximum-scale-1" />
+        <meta name="description" content="Kristin Ng Website">
+        <meta name="author" content="Kristin Ng">
+        <meta name="keywords" content="Kristin Ng, Tufts, Computer Science">
+
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="img/coding.png">
+        <link rel="stylesheet" href="https://use.typekit.net/ufg7hqz.css">
+		<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Source+Sans+Pro&display=swap" rel="stylesheet">       
+
+        <title>Kristin Ng</title>
+    </head>
+    <body>
+
+        <!--  Navigation Bar -->
+        <div id="nav">
+            <a href="#home-section" class="nav-item right">KRISTIN NG</a>
+            <a href="#project-section" class="nav-item right">PROJECTS</a>
+            <a href="#experience-section" class="nav-item right">EXPERIENCES</a>
+            <a href="#about-section" class="nav-item right">ABOUT</a>
+        </div>
+        
+        <div class="page-content">
+
+            <!--  Home Page -->
+            <section id="home-section">
+				<div class="container row">
+					<div class="container row" id="landing-container">
+						<img src="img/totoro.png" id="profile-icon">
+						<div class="container column" id="landing-text">
+							<h1 class="title">KRISTIN NG</h1>
+							<p id="app"></p>
+						</div>
+					</div>
+					<a href="#about-section" class="arrow"></a>
+				</div>
+			</section>
+
+            <!--  About Page -->
+            <section id="about-section">
+                <h1 class="subtitle"><center>ABOUT ME</center></h1>
+                <div class="container row" id="img-console">
+                    <div class="text">
+                    <p>Name: Kristin Ng</p>
+                    <p>Hometown: Hong Kong and Braintree, MA</p>
+                    <p>School: Tufts University</p>
+                    <p>Major: Computer Science</p>
+                    <p>Minors: CBS, Entrepeneurship</p>
+                    <p>Expected Graduation Date: May 2024</p>
+                    <p>Hobbies: Cooking, Baking, Writing, Biking, Anime </p>
+                    </div>
+                    <img src="img/profile.png" id="about-img">
+                </div>
+            </section>
+            
+
+            <!--  Experience Page -->
+			<section class="container column parallax" id="experience-section">
+				<div class="container column" id="text">
+					<h1 class="subtitle">EDUCATION</h1>
+					<div class="container row" id="education-title">
+						<img src="img/logo.png">
+						<div class="container column" id="school">
+							<h2>Tufts University</h2>
+							<h3>B.S. - Computer Science</h3>
+							<p>Expected Graduation: May 2024</p>
+						</div>
+					</div>
+					<div class="container column" id="coursework">
+                        <h4>Relevant Experience: </h4>
+                        <ul>
+                            <li> Software Sprint Participant @ Google</li>
+                            <li> Incoming Software Developer Intern @ Mastercard </li>
+                            <li>Data Structures TA @ Tufts</li>
+                            <li>SWE Intern @ Markit</li>
+                            <li>Front-end @ Jumbocode</li>
+                        </ul>
+						<h4>Relevant Coursework:</h4>
+						<p>Computer Science</p>
+						<ul>
+							<li>Data Structures (CS 15)</li>
+                            <li>Machine Programming and Assembly (CS 40)</li>
+                            <li>Algorithms (CS 160)</li>
+                            <li>Web Programming (CS 20)</li>
+						</ul>
+						<p>Other</p>
+						<ul>
+							<li>Social Psychology (PSY 14)</li>
+							<li>Introduction to Cognitive Brain Science (PSY 09)</li>
+							<li>Sociology of Asian Americans (SOC 94)</li>
+						</ul>
+						<p id="progress">*in progress</p>
+					</div>
+				</div>
+                <h2 class="resume"><a href="KristinNgResume.pdf">Download my Resume here!</a></h2>
+			</section>
+
+            <!-- Projects Section-->
+            <section class="container column" id="project-section">
+                <h1 class="subtitle">PROJECTS</h1>
+                <p> Work in Progress,,,check back later uwu</p>
+            </section>
+        </div>
+        
+        <!--Footer/Contact-->
+        <section class="container column" id="footer">
+            <div class="container row" id="social-container">
+                <a href="https://www.linkedin.com/in/kristin-ng/" target="_blank">LinkedIn</a>
+                <span>•</span>
+                <a href="https://github.com/kristin-ng" target="_blank">Github</a>
+                <span>•</span>
+                <a href="https://www.instagram.com/kristinneats/" target="_blank">Instagram</a>
+                <span>•</span>
+                <a href="mailto:kristin.ng@tufts.edu" target="_blank">Email</a>
+                <span>•</span>
+                <a href="https://medium.com/@kristin_ng" target="_blank">Medium</a>
+            </div>
+            <div>
+                <p id="copyright">Inspired by Christine Nguyen's Personal Website</p>
+
+
+            </div>
+        </section>
+            
+        </div>
+        <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+        <script src="scripts.js"></script>
+    </body>
 </html>
