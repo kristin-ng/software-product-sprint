@@ -12,3 +12,6 @@ To get started:
 Then follow the on-screen instructions to set up your repo.
 
 The website can be found here: https://genuine-box-302200.uk.r.appspot.com/
+This repo contains Kristin's portfolio and SPS projects
+
+Week 0: Modified README by adding line 14. 
