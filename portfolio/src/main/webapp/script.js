@@ -80,4 +80,11 @@ async function showServerTime() {
   
     const dateContainer = document.getElementById('date-container');
     dateContainer.innerText = textFromResponse;
-  }
+}
+/* Adds a fun fact to the page */
+function addFunFact() {
+    fetch('/fun-fact').then(response => response.text()).then((quote) => {
+      document.getElementById('fun-fact-container').innerText = quote;
+    });
+}
+

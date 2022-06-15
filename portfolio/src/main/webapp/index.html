@@ -106,14 +106,21 @@
             </section>
         </div>
         <!-- doGet: Date Example -->
-            <h1>See the Time!</h1>
+        <div style="text-align: center" id="date">
             <p>Time is important! Click To See The Time!</p>
             <button onclick="showServerTime();">
               Get Time!
             </button>
             <p id="date-container"></p>
-            <!-- <p>Click <a href="/date">here</a> to see the server response directly.</p> -->
-
+            <<p>Click <a href="/date">here</a> to see the server response directly.</p>
+        </div>
+        <!-- Fun Facts Servlet-->
+        <div style="text-align:center" id="fun-fact">
+            <p>Click here for a fun fact!</p>
+            <button onclick="addFunFact()">Fun Fact!</button>
+            <br/><br/>
+            <div id="fun-fact-container"></div>
+        </div>
         <!--Comment Section-->
         <section id="comment">
             <form action="/form-handler" method="POST">
