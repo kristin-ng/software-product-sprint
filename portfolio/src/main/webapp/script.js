@@ -88,3 +88,21 @@ function addFunFact() {
     });
 }
 
+/** Fetches tasks from the server and adds them to the DOM. */
+// function loadComments() {
+//     fetch('/list-comments').then(response => response.json()).then((comments) => {
+//       const commentListElement = document.getElementById('comment-list');
+//       comments.forEach((task) => {
+//         commentListElement.appendChild(createTaskElement(comment));
+//       })
+//     });
+//   }
+  
+//   /** Creates an element that represents a task, including its delete button. */
+//   function createCommentElement(comment) {
+//     const commentElement = document.createElement('li');
+//     commentElement.className = 'comment';
+
+//     commentElement.appendChild(commentElement);
+//     return commentElement;
+//   }
