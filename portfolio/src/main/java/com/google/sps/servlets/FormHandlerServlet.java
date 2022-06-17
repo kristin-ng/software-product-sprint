@@ -1,38 +1,40 @@
 package com.google.sps.servlets;
 
-import com.google.cloud.datastore.Datastore;
-import com.google.cloud.datastore.DatastoreOptions;
-import com.google.cloud.datastore.Entity;
-import com.google.cloud.datastore.FullEntity;
-import com.google.cloud.datastore.KeyFactory;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.jsoup.Jsoup;
-import org.jsoup.safety.Safelist;
+import com.google.gson.Gson;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Arrays;
 
+/** 
+* Servlet that processes comment. TODO: Improve formatting of response output
+* doPost requests the parameter value from "comment-input" and appends it to commentList and redirects back to the same page
+* doGET converts the commentList to json and writes it to the response
+*/
+@WebServlet("/comment")
+public final class FormHandlerServlet extends HttpServlet {
 
-/** Servlet responsible for storing forms. */
-@WebServlet("/form-handler")
-public class FormHandlerServlet extends HttpServlet {
+  private final List<String> commentList = new ArrayList<String>();
+  private final Gson gson = new Gson(); 
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    // Get the input from the form.
+    String comment = request.getParameter("comment-input");
+    if (comment != null && !comment.isEmpty()) {
+       commentList.add(comment); 
+    }
+    response.sendRedirect("/");
+  }
 
-    String form = Jsoup.clean(request.getParameter("text-input"), Safelist.none());
-    long timestamp = System.currentTimeMillis();
-
-    Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
-    KeyFactory keyFactory = datastore.newKeyFactory().setKind("Form");
-    FullEntity formEntity =
-        Entity.newBuilder(keyFactory.newKey())
-            .set("form", form)
-            .set("timestamp", timestamp)
-            .build();
-    datastore.put(formEntity);
-
-    response.sendRedirect("/index.html");
+  @Override
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String json = gson.toJson(commentList);
+    response.setContentType("text/html;");
+    response.getWriter().println(json);
   }
 }

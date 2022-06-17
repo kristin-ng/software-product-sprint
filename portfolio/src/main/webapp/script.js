@@ -74,21 +74,76 @@ function addFunFact() {
     });
 }
 
-/** Fetches tasks from the server and adds them to the DOM. */
-// function loadComments() {
-//     fetch('/list-comments').then(response => response.json()).then((comments) => {
-//       const commentListElement = document.getElementById('comment-list');
-//       comments.forEach((task) => {
-//         commentListElement.appendChild(createTaskElement(comment));
-//       })
-//     });
-//   }
-  
-//   /** Creates an element that represents a task, including its delete button. */
-//   function createCommentElement(comment) {
-//     const commentElement = document.createElement('li');
-//     commentElement.className = 'comment';
+google.charts.load('current', {'packages':['corechart']});
 
-//     commentElement.appendChild(commentElement);
-//     return commentElement;
-//   }
+google.charts.setOnLoadCallback(drawChart);
+
+
+
+/** Creates a chart and adds it to the page. */
+
+function drawChart() {
+
+  const data = new google.visualization.DataTable();
+
+  data.addColumn('string', 'Skill');
+
+  data.addColumn('number', 'Count');
+
+        data.addRows([
+
+          ['Programming', 75],
+
+          ['Teaching', 20],
+
+          ['Determination', 20],
+
+          ['Team work', 45],
+
+          ['Self-Teaching', 50],
+
+          ['Organization', 50]
+
+        ]);
+
+
+
+  const options = {
+
+    'width':800,
+
+    'height':500,
+
+    'is3D': 'true',
+
+    'fontName':'karla',
+
+    'fontSize':14,
+
+    'backgroundColor':'#e2eafc',
+
+    'enableInteractivity':'true',
+
+    'legend':{position: 'left', textStyle: {color: '#30343f', fontSize: 16}}
+
+  };
+
+
+
+  const chart = new google.visualization.PieChart(
+
+      document.getElementById('chart-container'));
+
+    chart.draw(data, options);
+
+}
+
+// /* Show comments to the page */ doesn't work, trying to do this. 
+// function showComments() {
+//     fetch('/comment').then(response => response.json()) // parses the respoonse as JSON
+//     .then((commentList) => { // now we can reference the fields in commentList!
+//         console.log(commentList);
+//         document.getElementById('comment-container').innerText = commentList;
+//     });
+// }
+
