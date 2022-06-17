@@ -21,17 +21,17 @@ public class FormHandlerServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-    String comment = Jsoup.clean(request.getParameter("text-input"), Safelist.none());
+    String form = Jsoup.clean(request.getParameter("text-input"), Safelist.none());
     long timestamp = System.currentTimeMillis();
 
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
     KeyFactory keyFactory = datastore.newKeyFactory().setKind("Form");
-    FullEntity commentEntity =
+    FullEntity formEntity =
         Entity.newBuilder(keyFactory.newKey())
-            .set("comment", comment)
+            .set("form", form)
             .set("timestamp", timestamp)
             .build();
-    datastore.put(commentEntity);
+    datastore.put(formEntity);
 
     response.sendRedirect("/index.html");
   }
