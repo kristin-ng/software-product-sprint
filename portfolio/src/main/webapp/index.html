@@ -10,7 +10,9 @@
         <link rel="stylesheet" href="style.css">
         <link rel="icon" href="img/coding.png">
         <link rel="stylesheet" href="https://use.typekit.net/ufg7hqz.css">
-		<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Source+Sans+Pro&display=swap" rel="stylesheet">       
+		<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Source+Sans+Pro&display=swap" rel="stylesheet"> 
+
+        <script src="https://www.gstatic.com/charts/loader.js"></script>      
 
         <title>Kristin Ng</title>
     </head>
@@ -96,6 +98,7 @@
 						<p id="progress">*in progress</p>
 					</div>
 				</div>
+                <div id="chart-container" />
                 <h2 class="resume"><a href="KristinNgResume.pdf">Download my Resume here!</a></h2>
 			</section>
 
@@ -122,14 +125,16 @@
             <div id="fun-fact-container"></div>
         </div>
         <!--Comment Section-->
-        <section id="comment">
-            <form action="/form-handler" method="POST">
-                <p>Leave a comment here:</p>
-                <textarea name="text-input">I love cheese</textarea>
-                <br/>
-                <input type="submit" />
-              </form>
-        </section>
+        <form action="/comment" method="POST">
+
+            <p>Enter your comment:
+            <textarea name="comment-input" placeholder="I like cheese"></textarea>
+            <br/><br/>
+            <input type="submit"/>
+        </form> 
+    
+        <!-- List Comment-->
+        <div id="comment-container"></div>
         <!--Footer/Contact-->
         <section class="container column" id="footer">
 

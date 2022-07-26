@@ -1,17 +1,3 @@
-// // Copyright 2020 Google LLC
-// //
-// // Licensed under the Apache License, Version 2.0 (the "License");
-// // you may not use this file except in compliance with the License.
-// // You may obtain a copy of the License at
-// //
-// //     https://www.apache.org/licenses/LICENSE-2.0
-// //
-// // Unless required by applicable law or agreed to in writing, software
-// // distributed under the License is distributed on an "AS IS" BASIS,
-// // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// // See the License for the specific language governing permissions and
-// // limitations under the License.
-
 var app = document.getElementById('app');
 
 var typewriter = new Typewriter(app, {
@@ -87,4 +73,77 @@ function addFunFact() {
       document.getElementById('fun-fact-container').innerText = quote;
     });
 }
+
+google.charts.load('current', {'packages':['corechart']});
+
+google.charts.setOnLoadCallback(drawChart);
+
+
+
+/** Creates a chart and adds it to the page. */
+
+function drawChart() {
+
+  const data = new google.visualization.DataTable();
+
+  data.addColumn('string', 'Skill');
+
+  data.addColumn('number', 'Count');
+
+        data.addRows([
+
+          ['Programming', 75],
+
+          ['Teaching', 20],
+
+          ['Determination', 20],
+
+          ['Team work', 45],
+
+          ['Self-Teaching', 50],
+
+          ['Organization', 50]
+
+        ]);
+
+
+
+  const options = {
+
+    'width':800,
+
+    'height':500,
+
+    'is3D': 'true',
+
+    'fontName':'karla',
+
+    'fontSize':14,
+
+    'backgroundColor':'#e2eafc',
+
+    'enableInteractivity':'true',
+
+    'legend':{position: 'left', textStyle: {color: '#30343f', fontSize: 16}}
+
+  };
+
+
+
+  const chart = new google.visualization.PieChart(
+
+      document.getElementById('chart-container'));
+
+    chart.draw(data, options);
+
+}
+
+// /* Show comments to the page */ doesn't work, trying to do this. 
+// function showComments() {
+//     fetch('/comment').then(response => response.json()) // parses the respoonse as JSON
+//     .then((commentList) => { // now we can reference the fields in commentList!
+//         console.log(commentList);
+//         document.getElementById('comment-container').innerText = commentList;
+//     });
+// }
 

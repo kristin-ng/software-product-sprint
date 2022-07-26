@@ -5,23 +5,36 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.google.gson.Gson;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Arrays;
 
-@WebServlet("/form-handler")
-public class FormHandlerServlet extends HttpServlet {
+/** 
+* Servlet that processes comment. TODO: Improve formatting of response output
+* doPost requests the parameter value from "comment-input" and appends it to commentList and redirects back to the same page
+* doGET converts the commentList to json and writes it to the response
+*/
+@WebServlet("/comment")
+public final class FormHandlerServlet extends HttpServlet {
+
+  private final List<String> commentList = new ArrayList<String>();
+  private final Gson gson = new Gson(); 
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    // Get the input from the form.
+    String comment = request.getParameter("comment-input");
+    if (comment != null && !comment.isEmpty()) {
+       commentList.add(comment); 
+    }
+    response.sendRedirect("/");
+  }
 
-    // Get the value entered in the form.
-    String textValue = request.getParameter("text-input");
-
-    // Print the value so you can see it in the server logs.
-    System.out.println("Thanks for your submission! " + textValue);
-    System.out.println("You submitted: " + textValue);
-    System.out.println("Hope you have a good day!");
-
-    // Write the value to the response so the user can see it.
-    response.getWriter().println("You submitted: " + textValue);
-    response.sendRedirect("https://genuine-box-302200.uk.r.appspot.com/");
+  @Override
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String json = gson.toJson(commentList);
+    response.setContentType("text/html;");
+    response.getWriter().println(json);
   }
 }
